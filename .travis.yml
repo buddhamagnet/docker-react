@@ -5,7 +5,18 @@ services:
 before_install:
   - docker build -t buddhamagnet/multi-react -f client/Dockerfile.dev ./client
 script:
-  - docker run -e CI=true buddhamagnet/multi-react yarn test -- --coverage
+  - docker run -e CI=true buddhamagnet/multi-react yarn test --coverage
+after_success:
+  - docker build -t buddhamagnet/multi-react ./client
+  - docker build -t buddhamagnet/multi-api ./api
+  - docker build -t buddhamagnet/multi-worker ./worker
+  - docker build -t buddhamagnet/multi-facade ./facade
+  - echo "$hub-password" | docker login -u "$hub-user" -- password-stdin
+  - docker push -t buddhamagnet/multi-react
+  - docker push -t buddhamagnet/multi-api
+  - docker push -t buddhamagnet/multi-worker
+  - docker push -t buddhamagnet/multi-facade
+
 deploy:
   provider: elasticbeanstalk
   region: "eu-west-2"
