@@ -22,7 +22,7 @@ deploy:
   region: "us-east-1"
   app: "multi-docker"
   env: "MultiDocker-env"
-  bucket_name: "elasticbeanstalk-eu-west-2-771301212860"
+  bucket_name: "elasticbeanstalk-us-east-1-771301212860"
   bucket_path: "multi-docker"
   access_key_id: AKIA3HFJCQK6I4GFK7XI
   secret_access_key:
