@@ -12,10 +12,10 @@ after_success:
   - docker build -t buddhamagnet/multi-worker ./worker
   - docker build -t buddhamagnet/multi-facade ./facade
   - echo "moon1967" | docker login -u "buddhamagnet" -- password-stdin
-  - docker push buddhamagnet/multi-react
-  - docker push buddhamagnet/multi-api
-  - docker push buddhamagnet/multi-worker
-  - docker push buddhamagnet/multi-facade
+  - docker push buddhamagnet/multi-react:latest
+  - docker push buddhamagnet/multi-api:latest
+  - docker push buddhamagnet/multi-worker:latest
+  - docker push buddhamagnet/multi-facade:latest
 
 deploy:
   provider: elasticbeanstalk
