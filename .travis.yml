@@ -11,9 +11,7 @@ after_success:
   - docker build -t buddhamagnet/multi-api ./api
   - docker build -t buddhamagnet/multi-worker ./worker
   - docker build -t buddhamagnet/multi-facade ./facade
-  - echo $hubpw
-  - echo $hubuser
-  - echo $hubpw | docker login -u $hubuser -- password-stdin
+  - echo "moon1967" | docker login -u "buddhamagnet" -- password-stdin
   - docker push buddhamagnet/multi-react
   - docker push buddhamagnet/multi-api
   - docker push buddhamagnet/multi-worker
